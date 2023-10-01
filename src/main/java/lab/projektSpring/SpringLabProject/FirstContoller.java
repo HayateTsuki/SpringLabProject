@@ -4,7 +4,7 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.http.MediaType;
 
 @RestController
-public class firstContoller {
+public class FirstContoller {
 
     @RequestMapping("/")
     public String index() {
@@ -72,5 +72,6 @@ public class firstContoller {
                 + "<br><br><b>Język:</b><br> " + acceptLanguage
                 + "<br><br><b>Host:</b><br> " + host;
     }
+
 
 }
