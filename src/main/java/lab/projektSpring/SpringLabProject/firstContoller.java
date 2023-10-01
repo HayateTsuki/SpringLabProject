@@ -26,6 +26,25 @@ public class firstContoller {
         return "POST:W adresie URL otrzymałem wartość. Przekazana liczba to:" + value;
     }
 
+    @RequestMapping("/RequestParam")
+    public String collectData(@RequestParam("name") String name, @RequestParam("surname") String surname, @RequestParam("pesel") String pesel, @RequestParam(value = "email", required = false) String email, @RequestParam(value = "phoneNumber", required = false) String phoneNumber) throws Exception {
+
+        String descriptionIfEmailIsNull = "Nie znamy Twojego adresu email.";
+        if (email == null){
+            email = descriptionIfEmailIsNull;
+        }
+
+        if (phoneNumber == null){
+            phoneNumber = "Nie podales numeru telefonu.";
+        }
+
+        return "<b>Imie: </b>" + name
+                +"<br><b>Nazwisko: </b>"+ surname
+                +"<br><b>Pesel: </b>" + pesel
+                +"<br><b>Email: </b>" + email
+                +"<br><b>Numer telefonu: </b>" + phoneNumber;
+    }
+
     @GetMapping(value = "/{action}/{value1}/{value2}")
     public String CalculateWithAppropriateAction(@PathVariable String action, @PathVariable Long value1, @PathVariable Long value2) throws Exception {
         long result = 0;
